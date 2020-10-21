@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
-import { ListItem } from 'react-native-elements';
 import { Tile } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
@@ -19,6 +18,7 @@ class Directory extends Component {
 
     render() {
         const { navigate } = this.props.navigation;
+
         const renderDirectoryItem = ({item}) => {
             return (
                 <Tile
@@ -26,7 +26,7 @@ class Directory extends Component {
                     caption={item.description}
                     featured
                     onPress={() => navigate('CampsiteInfo', { campsiteId: item.id })}
-                    imageSrc={{ source: require('./images/react-lake.jpg')}}
+                    imageSrc={{uri: baseUrl + item.image}}
                 />
             );
         };
@@ -41,4 +41,4 @@ class Directory extends Component {
     }
 }
 
-export default Directory;
+export default connect(mapStateToProps)(Directory);

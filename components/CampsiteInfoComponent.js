@@ -70,14 +70,13 @@ class CampsiteInfo extends Component {
     };
   }
 
-  static navigationOptions = {
-    title: 'Campsite Information'
-  }
-
   markFavorite() {
     this.setState({ favorite: true });
   }
 
+  static navigationOptions = {
+    title: 'Campsite Information'
+  }
   render() {
     const campsiteId = this.props.navigation.getParam('campsiteId');
     const campsite = this.props.campsites.campsites.filter(campsite => campsite.id === campsiteId)[0];
